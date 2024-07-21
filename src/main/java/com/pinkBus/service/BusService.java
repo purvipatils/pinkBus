@@ -1,8 +1,11 @@
 package com.pinkBus.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.pinkBus.controller.DuplicateRecordException;
+
 import com.pinkBus.model.Bus;
 import com.pinkBus.repository.BusRepository;
 
@@ -36,7 +39,14 @@ public class BusService {
 	private Bus isDuplicateBusNumber(String busNumber) {
 		return busRepository.findByBusNumber(busNumber);
 	}
+
+	public void delete(Bus bus) {
+		// TODO Auto-generated method stub
+		busRepository.deleteById(bus.getId());
+	}
+
+	public Optional<Bus> getBus(Long busId) {
+		return busRepository.findById(busId);
+	}
+
 }
-
-
-
