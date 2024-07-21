@@ -10,42 +10,24 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "bus")
 public class Bus {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long Id;
 
-    @Column(name = "bus_number")
-    private String busNumber;
+	@Column(name = "busNumber")
+	private String busNumber;
 
-    @Column(name = "seating_capacity")
-    private int seatingCapacity;
+	@Column(name = "seatingCapacity")
+	private int seatingCapacity;
 
-    @Column(name = "bus_type")
-    private String busType;
+	@Column(name = "busType")
+	private String busType;
 
-    @Column(name = "departure_city")
-    private String departureCity;
+	@Column(name = "manufacturer")
+	private String manufacturer;
 
-    @Column(name = "arrival_city")
-    private String arrivalCity;
-
-    @Column(name = "departure_time")
-    private String departureTime;
-
-    @Column(name = "arrival_time")
-    private String arrivalTime;
-    
-    @Column(name = "bus_fare")
-    private int busFare;
-    
-
-	public int getBusfare() {
-		return busFare;
-	}
-
-	public void setBusfare(int busfare) {
-		this.busFare = busfare;
-	}
+	@Column(name = "status")
+	private Boolean status;
 
 	public Long getId() {
 		return Id;
@@ -55,7 +37,6 @@ public class Bus {
 		Id = id;
 	}
 
-	
 	public String getBusNumber() {
 		return busNumber;
 	}
@@ -80,36 +61,20 @@ public class Bus {
 		this.busType = busType;
 	}
 
-	public String getDepartureCity() {
-		return departureCity;
+	public String getManufacturer() {
+		return manufacturer;
 	}
 
-	public void setDepartureCity(String departureCity) {
-		this.departureCity = departureCity;
+	public void setManufacturer(String manufacturer) {
+		this.manufacturer = manufacturer;
 	}
 
-	public String getArrivalCity() {
-		return arrivalCity;
+	public Boolean getStatus() {
+		return status;
 	}
 
-	public void setArrivalCity(String arrivalCity) {
-		this.arrivalCity = arrivalCity;
-	}
-
-	public String getDepartureTime() {
-		return departureTime;
-	}
-
-	public void setDepartureTime(String departureTime) {
-		this.departureTime = departureTime;
-	}
-
-	public String getArrivalTime() {
-		return arrivalTime;
-	}
-
-	public void setArrivalTime(String arrivalTime) {
-		this.arrivalTime = arrivalTime;
+	public void setStatus(Boolean status) {
+		this.status = status;
 	}
 
 	public Bus() {
@@ -121,5 +86,4 @@ public class Bus {
 		return null;
 	}
 
-   
 }
