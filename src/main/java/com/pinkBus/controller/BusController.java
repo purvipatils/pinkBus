@@ -1,14 +1,12 @@
 package com.pinkBus.controller;
 
-import java.util.Optional;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -57,19 +55,9 @@ public class BusController {
 
 	@DeleteMapping("/delete/hard/{busId}")
 	public ResponseEntity<String> delete(@PathVariable("busId") Long busId) {
-		Optional<Bus> existingBus = this.busService.getBus(busId);
-		if (existingBus.isPresent()) {
-			this.busService.delete(existingBus.get());
-			return ResponseEntity.ok().build();
-		}
-		return ResponseEntity.notFound().build();
-	}
-	
-	@PutMapping("/delete/soft/{busId}")
-	public ResponseEntity<String> deactivate(@PathVariable("busId") Long busId) {
-		Optional<Bus> existingBus = this.busService.getBus(busId);
-		if (existingBus.isPresent()) {
-			this.busService.delete(existingBus.get());
+		Bus existingBus = this.busService.getBusById(busId);
+		if (existingBus != null) {
+			this.busService.deleteBus(existingBus.getId());
 			return ResponseEntity.ok().build();
 		}
 		return ResponseEntity.notFound().build();

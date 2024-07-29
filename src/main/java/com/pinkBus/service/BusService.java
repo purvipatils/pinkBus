@@ -1,6 +1,5 @@
 package com.pinkBus.service;
 
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -40,13 +39,10 @@ public class BusService {
 		return busRepository.findByBusNumber(busNumber);
 	}
 
-	public void delete(Bus bus) {
+	public void deleteBus(Long busId){
 		// TODO Auto-generated method stub
-		busRepository.deleteById(bus.getId());
+		busRepository.deleteById(busId);
 	}
 
-	public Optional<Bus> getBus(Long busId) {
-		return busRepository.findById(busId);
-	}
-
+	
 }
